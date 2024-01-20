@@ -27,6 +27,17 @@ public class Animals {
         System.out.println("In our zoo we have " + numOfAnimals + " " + animalName + ".");
         System.out.println(animalName + " has " + numOfLegs + " legs, and " + numOfWings + " wings.");
     }
+public static void CountAnimals(Predators lion, Primates chimpanzee, Horses zebra, MarineAnimals dolphin, Birds eagle, Reptiles crocodile){
+    int sumOfAnimals = lion.getNumOfAnimals() + chimpanzee.getNumOfAnimals() + zebra.getNumOfAnimals() + dolphin.getNumOfAnimals() + eagle.getNumOfAnimals() + crocodile.getNumOfAnimals();
+    System.out.println("In our zoo are " + sumOfAnimals + " animals: ");
+    System.out.println(lion.getAnimalName() + " - " + lion.getNumOfAnimals());
+    System.out.println(chimpanzee.getAnimalName() + " - " + chimpanzee.getNumOfAnimals());
+    System.out.println(zebra.getAnimalName() + " - " + zebra.getNumOfAnimals());
+    System.out.println(dolphin.getAnimalName() + " - " + dolphin.getNumOfAnimals());
+    System.out.println(eagle.getAnimalName() + " - " + eagle.getNumOfAnimals());
+    System.out.println(crocodile.getAnimalName() + " - " + crocodile.getNumOfAnimals());
+}
+
 
     public void eat() {
         System.out.println(animalName + " eats mostly " + food + ".");

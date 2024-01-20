@@ -51,19 +51,8 @@ public class AnimalRegistration {
 
         System.out.println("---------------------------------------------");
 
-        int sum = lion.getNumOfAnimals() + chimpanzee.getNumOfAnimals() + zebra.getNumOfAnimals() + dolphin.getNumOfAnimals() + eagle.getNumOfAnimals() + crocodile.getNumOfAnimals();
-        System.out.println("In our zoo are " + sum + " animals: ");
-        System.out.println(lion.getNumOfAnimals() + " " + lion.getAnimalName());
-        System.out.println(chimpanzee.getNumOfAnimals() + " " + chimpanzee.getAnimalName() + "s");
-        System.out.println(zebra.getNumOfAnimals() + " " + zebra.getAnimalName() + "s");
-        System.out.println(dolphin.getNumOfAnimals() + " " + dolphin.getAnimalName() + "s");
-        System.out.println(eagle.getNumOfAnimals() + " " + eagle.getAnimalName() + "s");
-        System.out.println(crocodile.getNumOfAnimals() + " " + crocodile.getAnimalName());
-
-
+        Animals.CountAnimals(lion, chimpanzee, zebra, dolphin, eagle, crocodile);
     }
-
-
 }
 
 
