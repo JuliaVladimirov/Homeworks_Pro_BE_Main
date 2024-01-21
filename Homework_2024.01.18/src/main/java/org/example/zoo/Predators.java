@@ -27,6 +27,19 @@ public class Predators extends Animals { //Predators - хищники
     public void setPlaceInZoo(String placeInZoo) {
         this.placeInZoo = placeInZoo;
     }
+
+    @Override
+    public String toString() {
+        return '\n' + "Predators{" +
+                "Kind of animal=" + getAnimalName() +
+                ", Quantity=" + getNumOfAnimals() +
+                ", Number of legs=" + getNumOfLegs() +
+                ", Number of wings=" + getNumOfWings() +
+                ", Regular food=" + getFood() +
+                ", Lives in=" + placeInZoo +
+                '}';
+
+    }
 }
 
 

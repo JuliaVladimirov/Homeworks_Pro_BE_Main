@@ -11,10 +11,30 @@ public class Reptiles extends Animals {
     }
 
     public void layEggs() {
-        System.out.println("Unlike birds " + super.getAnimalName() + " can not fly but can lay eggs.");
+        System.out.println("Like birds " + super.getAnimalName() + " can lay eggs.");
     }
 
     public void placeReptiles() {
-        System.out.println("OUr reptiles live in the big terrarium in " + placeInZoo + ".");
+        System.out.println("Our reptiles live in the big terrarium in " + placeInZoo + ".");
+    }
+
+    public String getPlaceInZoo() {
+        return placeInZoo;
+    }
+
+    public void setPlaceInZoo(String placeInZoo) {
+        this.placeInZoo = placeInZoo;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "Reptiles{" +
+                "Kind of animal=" + getAnimalName() +
+                ", Quantity=" + getNumOfAnimals() +
+                ", Number of legs=" + getNumOfLegs() +
+                ", Number of wings=" + getNumOfWings() +
+                ", Regular food=" + getFood() +
+                ", Lives in=" + placeInZoo +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
 package org.example.zoo;
 
+import java.util.ArrayList;
+
 public class Animals {
     private int numOfAnimals;
 
@@ -27,22 +29,21 @@ public class Animals {
         System.out.println("In our zoo we have " + numOfAnimals + " " + animalName + ".");
         System.out.println(animalName + " has " + numOfLegs + " legs, and " + numOfWings + " wings.");
     }
-public static void CountAnimals(Predators lion, Primates chimpanzee, Horses zebra, MarineAnimals dolphin, Birds eagle, Reptiles crocodile){
-    int sumOfAnimals = lion.getNumOfAnimals() + chimpanzee.getNumOfAnimals() + zebra.getNumOfAnimals() + dolphin.getNumOfAnimals() + eagle.getNumOfAnimals() + crocodile.getNumOfAnimals();
-    System.out.println("In our zoo are " + sumOfAnimals + " animals: ");
-    System.out.println(lion.getAnimalName() + " - " + lion.getNumOfAnimals());
-    System.out.println(chimpanzee.getAnimalName() + " - " + chimpanzee.getNumOfAnimals());
-    System.out.println(zebra.getAnimalName() + " - " + zebra.getNumOfAnimals());
-    System.out.println(dolphin.getAnimalName() + " - " + dolphin.getNumOfAnimals());
-    System.out.println(eagle.getAnimalName() + " - " + eagle.getNumOfAnimals());
-    System.out.println(crocodile.getAnimalName() + " - " + crocodile.getNumOfAnimals());
-}
-
 
     public void eat() {
         System.out.println(animalName + " eats mostly " + food + ".");
     }
 
+    public static void CountAnimals(Animals[] animals) {
+        int sumOfAnimals = 0;
+        System.out.println("In our zoo are: ");
+        for (int i = 0; i < animals.length; i++) {
+            sumOfAnimals += animals[i].getNumOfAnimals();
+            System.out.println(animals[i].getAnimalName() + " - " + animals[i].getNumOfAnimals());
+        }
+        System.out.println("All together we have " + sumOfAnimals + " animals: ");
+
+    }
     public int getNumOfAnimals() {
         return numOfAnimals;
     }
@@ -81,6 +82,17 @@ public static void CountAnimals(Predators lion, Primates chimpanzee, Horses zebr
 
     public void setFood(String food) {
         this.food = food;
+    }
+
+    @Override
+    public String toString() {
+        return "Animals{" +
+                "numOfAnimals=" + numOfAnimals +
+                ", animalName='" + animalName + '\'' +
+                ", numOfLegs=" + numOfLegs +
+                ", numOfWings=" + numOfWings +
+                ", food='" + food + '\'' +
+                '}';
     }
 }
 

@@ -11,7 +11,7 @@ public class Birds extends Animals {
     }
 
     public void fly() {
-        System.out.println("Unlike other animals " + super.getAnimalName() + " has can fly.");
+        System.out.println(super.getAnimalName() + " has can fly.");
     }
 
     public void placeBirds() {
@@ -24,5 +24,17 @@ public class Birds extends Animals {
 
     public void setPlaceInZoo(String placeInZoo) {
         this.placeInZoo = placeInZoo;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "Birds{" +
+                "Kind of animal=" + getAnimalName() +
+                ", Quantity=" + getNumOfAnimals() +
+                ", Number of legs=" + getNumOfLegs() +
+                ", Number of wings=" + getNumOfWings() +
+                ", Regular food=" + getFood() +
+                ", Lives in=" + placeInZoo +
+                '}';
     }
 }

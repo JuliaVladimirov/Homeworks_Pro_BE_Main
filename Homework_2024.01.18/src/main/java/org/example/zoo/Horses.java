@@ -25,4 +25,16 @@ public class Horses extends Animals {
     public void setPlaceInZoo(String placeInZoo) {
         this.placeInZoo = placeInZoo;
     }
+
+    @Override
+    public String toString() {
+        return '\n' + "Horses{" +
+                "Kind of animal=" + getAnimalName() +
+                ", Quantity=" + getNumOfAnimals() +
+                ", Number of legs=" + getNumOfLegs() +
+                ", Number of wings=" + getNumOfWings() +
+                ", Regular food=" + getFood() +
+                ", Lives in=" + placeInZoo +
+                '}';
+    }
 }

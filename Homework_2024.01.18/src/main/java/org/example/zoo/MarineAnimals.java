@@ -15,7 +15,7 @@ public class MarineAnimals extends Animals {// marine animals - морские �
     }
 
     public void placeMarineAnimals() {
-        System.out.println("Our marine animals live in the pool and in the aquarium in " + placeInZoo + ".");
+        System.out.println("Our marine animals live in the pool in " + placeInZoo + ".");
     }
 
     public String getPlaceInZoo() {
@@ -24,5 +24,17 @@ public class MarineAnimals extends Animals {// marine animals - морские �
 
     public void setPlaceInZoo(String placeInZoo) {
         this.placeInZoo = placeInZoo;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "MarineAnimals{" +
+                "Kind of animal=" + getAnimalName() +
+                ", Quantity=" + getNumOfAnimals() +
+                ", Number of legs=" + getNumOfLegs() +
+                ", Number of wings=" + getNumOfWings() +
+                ", Regular food=" + getFood() +
+                ", Lives in=" + placeInZoo +
+                '}';
     }
 }
