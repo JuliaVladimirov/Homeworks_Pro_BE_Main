@@ -34,7 +34,7 @@ public class PetInTheHouse {
 
         System.out.println("--------------------------------------------------");
 
-        Cat cat1 = new Cat("Cat", "Tilly", "black", 4, "fish", "a basket", "meow-meow", 2, 2, "a mouse");
+        Cat cat1 = new Cat("Cat", "Tilly", "black", 4, "fish", "a basket", "meow-meow", 2, 2, "mice");
         cat1.run();
         cat1.eat();
         cat1.sleep();
@@ -45,7 +45,7 @@ public class PetInTheHouse {
 
         System.out.println("--------------------------------------------------");
 
-        Cat cat2 = new Cat("Cat", "Fluffy", "white", 4, "cat food", "a bed", "meow-meow", 2, 2, "a bird");
+        Cat cat2 = new Cat("Cat", "Fluffy", "white", 4, "cat food", "a bed", "meow-meow", 2, 2, "birds");
         cat2.run();
         cat2.eat();
         cat2.sleep();
