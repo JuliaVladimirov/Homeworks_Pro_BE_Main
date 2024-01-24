@@ -69,7 +69,7 @@ public class AnimalRegistration {
         crocodile.layEggs();
         crocodile.placeReptiles();
 
-        animals.add(crocodile);
+
 
         System.out.println("---------------------------------------------");
 
