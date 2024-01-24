@@ -10,27 +10,27 @@ package lesson20240117.battle;
 //6. В классы Superhero и Wizard добавить метод introduce(), который выводил бы в консоль тест приветствия персонажа.
 //По умолчанию приветствие выводится в виде "Hi, I'm Batman!".
 //Однако должна быть возможность каждому персонажу задавать свой особенный текст.
-public class Wizard {
+public class Wizard extends Character {
 
-    private String name;
 
     private int magicLevel;
 
-    private String message;
 
-    public Wizard(String name, int magicLevel, String message) {
-        this.name = name;
+    public Wizard(String name, int magicLevel) {
+        super(name);
         this.magicLevel = magicLevel;
-        this.message = message;
     }
 
-    public String getName() {
-        return name;
+    public Wizard(String name, String message, int magicLevel) {
+        super(name, message);
+        this.magicLevel = magicLevel;
+    }
+    @Override
+    public void introduce() {
+        System.out.println(getMessage());
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public int getMagicLevel() {
         return magicLevel;
@@ -40,26 +40,16 @@ public class Wizard {
         this.magicLevel = magicLevel;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
-    public void introduce (Wizard wizard){
-        System.out.println("Hi, I'm " + wizard.getName() + "!");
+        public void heal(Superhero hero) {
+        if (hero.getHealth() == 100){
+            System.out.println(hero.getHealth() + "is healthy. Nothing to heal.");
+        } else {
+            hero.setHealth(100);
+            System.out.println("Now " + hero.getGetName() + "'s health level is healed.");
+        }
 
-    }
-
-    public void introduceSpecial (Wizard wizard){
-        System.out.println(wizard.getName() + ": " + wizard.getMessage() + "!");
-    }
-
-    public void heal(Superhero hero) {
-        hero.setHealth(100);
-        System.out.println("Now " + hero.getName() + "'s health level is " + hero.getHealth());
     }
 
     public void heal(Superhero[] heroes) {
@@ -70,7 +60,7 @@ public class Wizard {
 
     public void increaseForce(Superhero hero){
         hero.setForce((int)(hero.getForce() + hero.getForce() * this.magicLevel * 0.1));
-        System.out.println("Now " + hero.getName() + "'s force is " + hero.getForce());
+        System.out.println("Now " + hero.getGetName() + "'s force is " + hero.getForce());
     }
 
     public void increaseForce(Superhero[] heroes){
