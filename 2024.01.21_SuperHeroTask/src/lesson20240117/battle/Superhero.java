@@ -15,100 +15,129 @@ public class Superhero {
     private Weapon weapon;
 
 
-    private static Superhero[] availableSuperhero;
 
-    static {
-        Superhero superhero1 = new Superhero("Jack", 5);
-        Superhero superhero2 = new Superhero("Kevin", 4);
-        Superhero superhero3 = new Superhero("Zena", 3);
-        Superhero superhero4 = new Superhero("Bill", 2);
-        Superhero superhero5 = new Superhero("Harry", 1);
-        availableSuperhero = new Superhero[]{superhero1, superhero2, superhero3, superhero4, superhero5};
-    }
-
-    public Superhero(String name, int force) {
+    public Superhero(String name, int force, Protection protection, Weapon weapon) {
         this.name = name;
         this.health = 100;
         this.force = force;
-        this.protection = Protection.generateRandomProtection();
-        this.weapon = Weapon.generateRandomWeapon();
+        this.protection = protection;
+        this.weapon = weapon;
 
     }
 
     public static Superhero generateRandomSuperhero() {
         Random random = new Random();
-        int r = random.nextInt(availableSuperhero.length);
-        return availableSuperhero[r];
+        Weapon weapon = Weapon.generateRandomWeapon();
+        Protection protection = Protection.generateRandomProtection();
+        String[] names = {"Batman", "Superman", "Spider-man", "Ironman", "Wonder woman", "Captain America", "Hulk"};
+        return new Superhero(names[random.nextInt(names.length)], random.nextInt(5), protection, weapon);
     }
 
-   public static void fight(Superhero superhero1,Superhero superhero2 ){
-
-       int hero1CommonForce = superhero1.force + superhero1.weapon.getForce();
-       int hero2CommonForce = superhero2.force + superhero2.weapon.getForce();
-
-       double hero1Health = superhero1.health - (double) (hero1CommonForce - hero2CommonForce) / superhero1.protection.getLevel();
-       double hero2Health = superhero2.health - (double) (hero2CommonForce - hero1CommonForce) / superhero2.protection.getLevel();
-
-       System.out.println(superhero1.name + "'s health level = " + hero1Health);
-       System.out.println(superhero2.name + "'s health level = " + hero2Health);
-       System.out.println("---------------------------------------------------");
-
-       if (hero1Health > hero2Health){
-           System.out.println(superhero1.name + " won the fight.");
-       } else if (hero1Health < hero2Health) {
-           System.out.println(superhero1.name + " won the fight.");
-       } else {
-           System.out.println("Nobody won the fight.");
-       }
-   }
-
-    public int getForce() {
-        return force;
+    public static void introduce (Superhero hero){
+        System.out.println("Hi, I'm " + hero.getName() + "!");
     }
 
-    public void setForce(int force) {
-        if (force < 0) throw new RuntimeException("Force cannot be less than 0");
-        this.force = force;
+    public static void introduceSpecial (Superhero hero, String message){
+                System.out.println(hero.getName() + ": " + message + "!");
+    }
+    public static void fight(Superhero superhero1, Superhero superhero2) {
+
+        int hero1CommonForce = superhero1.force + superhero1.weapon.getForce();
+        int hero2CommonForce = superhero2.force + superhero2.weapon.getForce();
+
+        System.out.println(superhero1.name + " fights with " + superhero2.name);
+        System.out.println("Before fight:");
+        System.out.println(superhero1.name + "'s common force = " + hero1CommonForce);
+        System.out.println(superhero2.name + "'s common force = " + hero2CommonForce);
+
+        if (hero1CommonForce > hero2CommonForce) {
+            System.out.println(superhero1.name + " won the fight.");
+            superhero2.setHealth(superhero2.health - (hero1CommonForce - hero2CommonForce) / superhero2.protection.getLevel());
+            System.out.println("After fight " + superhero2.name + "'s health level = " + superhero2.health);
+        } else if (hero1CommonForce < hero2CommonForce) {
+            System.out.println(superhero2.name + " won the fight.");
+            superhero1.setHealth(superhero1.health - (hero2CommonForce - hero1CommonForce) / superhero1.protection.getLevel());
+            System.out.println("After fight " + superhero1.name + "'s health level = " + superhero1.health);
+        } else {
+            System.out.println("Nobody won the fight.");
+        }
     }
 
-    public String getName() {
-        return name;
+    public void fight(Superhero another) {
+
+        System.out.println(this.name + " fights with " + another.name);
+
+        int myForce = this.force + this.weapon.getForce();
+        int anotherForce = another.force + another.weapon.getForce();
+
+        System.out.println("Before fight:");
+        System.out.println(this.name + "'s common force = " + myForce);
+        System.out.println(another.name + "'s common force = " + anotherForce);
+
+        if (myForce < anotherForce) {
+            System.out.println(this.name + " loses");
+            this.health = this.health - (anotherForce - myForce) / this.protection.getLevel();
+            System.out.println("After fight " + this.name + "'s health level = " + this.health);
+        } else if (myForce > anotherForce) {
+            System.out.println(another.name + " loses");
+            another.health = another.health - (myForce - anotherForce) / another.protection.getLevel();
+            System.out.println("After fight " + another.name + "'s health level = " + another.health);
+        } else {
+            System.out.println("No one wins. Powers are equal");
+        }
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public int getHealth() {
-        return health;
-    }
+        public int getForce () {
+            return force;
+        }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+        public void setForce ( int force){
+            if (force < 0) throw new RuntimeException("Force cannot be less than 0");
+            this.force = force;
+        }
 
-    public Protection getProtection() {
-        return protection;
-    }
+        public String getName () {
+            return name;
+        }
 
-    public void setProtection(Protection protection) {
-        this.protection = protection;
-    }
+        public void setName (String name){
+            this.name = name;
+        }
 
-    public Weapon getWeapon() {
-        return weapon;
-    }
+        public int getHealth () {
+            return health;
+        }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
+        public void setHealth ( int health){
+            this.health = health;
+        }
+
+        public Protection getProtection () {
+            return protection;
+        }
+
+        public void setProtection (Protection protection){
+            this.protection = protection;
+        }
+
+        public Weapon getWeapon () {
+            return weapon;
+        }
+
+        public void setWeapon (Weapon weapon){
+            this.weapon = weapon;
+        }
+
+
 
     @Override
-    public String toString() {
-        return "Hero = '" + name + '\'' +
-                ", health = " + health +
-                ", force = " + force +
-                ", protection = " + protection +
-                ", weapon = " + weapon;
+        public String toString () {
+            return "Hero = '" + name + '\'' +
+                    ", health = " + health +
+                    ", force = " + force +
+                    ", protection = " + protection +
+                    ", weapon = " + weapon;
+        }
     }
-}
+
