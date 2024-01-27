@@ -40,6 +40,12 @@ public abstract class PostMailing {
         this.recipientAddress = recipientAddress;
     }
 
+public void informToDeliver (){
+    System.out.println("A " + getNameOfMailing() +  " has arrived at your address: " + getRecipientAddress() + ", from: " + getSenderAddress());
+}
+    public void informToSend (){
+        System.out.println("You send a " + getNameOfMailing() +  " from your address: " + getRecipientAddress() + " to: " + getSenderAddress());
+    }
 
     public abstract void deliver();
 
