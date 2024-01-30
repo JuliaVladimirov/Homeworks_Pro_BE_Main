@@ -1,7 +1,7 @@
 package org.example.coffeemachine;
 
 public enum CoffeeMachine {
-    COFFEE_MACHINE ("water", "coffee", "milk", "sugar");
+    COFFEE_MACHINE ("filtered water", "Arabica coffee", "3% milk", "sugar");
 
     private String water;
     private String coffee;
