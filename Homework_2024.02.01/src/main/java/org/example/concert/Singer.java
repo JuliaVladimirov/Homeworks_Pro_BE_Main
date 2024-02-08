@@ -1,10 +1,13 @@
 package org.example.concert;
 
-public class Singer {
-    private String className = "singer";
+public class Singer extends Artist {
+    public Singer(String name) {
+        super(name);
+
+    }
 
     @Override
-    public String toString() {
-        return className;
+    public void perform() {
+        System.out.println(getClass().getSimpleName() + " " + getName() + " is singing");
     }
 }
