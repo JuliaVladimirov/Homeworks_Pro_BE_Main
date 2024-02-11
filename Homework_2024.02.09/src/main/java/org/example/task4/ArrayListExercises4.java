@@ -59,18 +59,12 @@ public class ArrayListExercises4 {
     }
 
     public static void replaceVowels(ArrayList<String> arrayList) { // заменяет все гласные буквы в каждой строке на символ ''
+        char[] vowels = new char[]{'a','A','o','O', 'u', 'U', 'e', 'E', 'i', 'I'};
 
         for (int i = 0; i < arrayList.size(); i++) {
-            arrayList.set(i, arrayList.get(i).replace('a', ' '));
-            arrayList.set(i, arrayList.get(i).replace('o', ' '));
-            arrayList.set(i, arrayList.get(i).replace('u', ' '));
-            arrayList.set(i, arrayList.get(i).replace('e', ' '));
-            arrayList.set(i, arrayList.get(i).replace('i', ' '));
-            arrayList.set(i, arrayList.get(i).replace('A', ' '));
-            arrayList.set(i, arrayList.get(i).replace('O', ' '));
-            arrayList.set(i, arrayList.get(i).replace('U', ' '));
-            arrayList.set(i, arrayList.get(i).replace('E', ' '));
-            arrayList.set(i, arrayList.get(i).replace('I', ' '));
+            for (char vowel:vowels) {
+                arrayList.set(i, arrayList.get(i).replace(vowel, ' '));
+            }
         }
     }
 }
