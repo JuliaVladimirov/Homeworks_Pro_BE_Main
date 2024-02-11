@@ -17,7 +17,7 @@ public class BoxString extends Box<String> implements BoxInterface<String> {
           int digitalWIDTH = Integer.parseInt(super.getWIDTH());
 
           if (digitalHeight < digitalHEIGHT && digitalLength < digitalLENGTH && digitalWidth < digitalWIDTH) {
-               System.out.println("Your object fits the box. You can sen your package.");
+               System.out.println("Your object fits the box. You can send your package.");
           } else {
                System.out.println("Your object does not fit the box. Sorry.");
           }
