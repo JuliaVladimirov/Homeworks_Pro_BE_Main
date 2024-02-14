@@ -15,27 +15,34 @@ public class Main {
 
 
         List<Integer> numberOfAllAnimals = new ArrayList<>();
-        for (int i = 0; i < 5000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             numberOfAllAnimals.add(1);
         }
         System.out.println(numberOfAllAnimals.size());
+        int birthRate = 14;
+        int deathRate = 8;
+        int years = 10;
 
 
-        ListIterator<Integer> iterator = numberOfAllAnimals.listIterator();
-        int count = 1;
-        while (iterator.hasNext()) {
-            iterator.next();
-            if (count % 1000 == 0) {
-                for (int i = 0; i < (14 - 8); i++) {
-                    iterator.add(1);
+        for (int i = 0; i < years; i++) {
+            ListIterator<Integer> iterator = numberOfAllAnimals.listIterator();
+            int count = 1;
+            while (iterator.hasNext()) {
+                iterator.next();
+                if (count % 1000 == 0) {
+                    for (int j = 0; j < (birthRate - deathRate); j++) {
+                        iterator.add(1);
+                    }
                 }
+                count++;
             }
-            count++;
         }
-        System.out.println("Через 10 лет зверей будет: " + (numberOfAllAnimals.size() * 10));
+
+        System.out.println("Через 10 лет зверей будет: " + (numberOfAllAnimals.size()));
+
         // поскольку тема урока была "итераторы", то я задание выполнила через ListIterator.
-        // Но это нереально долго, а именно операция add() (и через цикл и просто добавлением), мой копьютер с трудом справился где-то за 15-20 минут. Видимо памяти не хватает. Так быть не должно, конечно.
-        //Уменьшила изначальное количество до 5-ти миллионов, иначе очень печально.
+        // Но это нереально долго, а именно операция add() (и через цикл и просто добавлением), мой компьютер с трудом справился где-то за 15-20 минут. Видимо, памяти не хватает. Так быть не должно, конечно.
+        //Уменьшила изначальное количество до 1-го миллиона, иначе очень печально.
 
 
 
