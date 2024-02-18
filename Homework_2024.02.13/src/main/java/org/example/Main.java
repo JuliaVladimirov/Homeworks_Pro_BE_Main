@@ -15,6 +15,7 @@ public class Main {
 
         int originalQuantity = 1000000;
         List<Integer> numberOfAllAnimals = new ArrayList<>();
+
         for (int i = 0; i < originalQuantity; i++) {
             numberOfAllAnimals.add(1);
         }
