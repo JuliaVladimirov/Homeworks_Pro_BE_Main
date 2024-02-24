@@ -86,6 +86,14 @@ public class GasStation {
 
         System.out.println("Оставшийся транспорт в очереди");
         System.out.println(transportPriorityQueue3 + "\n");
+
+        System.out.print("Третьим будет обслужен: ");
+        System.out.print(transportPriorityQueue3.peek() + "\n");
+
+        System.out.print("Уже обслужен: ");
+        System.out.print(transportPriorityQueue3.poll() + "\n");
+        System.out.println();
+
     }
 }
 
