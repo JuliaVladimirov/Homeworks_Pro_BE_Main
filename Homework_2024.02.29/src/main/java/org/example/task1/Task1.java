@@ -14,18 +14,19 @@ public class Task1 {
 
         System.out.println("Functional Interfaces:");
 
-        Printable printable = (text) -> {
-            System.out.println(text.toUpperCase());
-            System.out.println(text.toLowerCase() + "\n");
-        };
-        printable.print("I Love Functional Interfaces");
+        Printable printable1 = (text) -> System.out.println(text.toUpperCase());
+        printable1.print("I Love Functional Interfaces");
+
+        Printable printable2 = (text) -> System.out.println(text.toLowerCase() + "\n");
+        printable2.print("I Love Functional Interfaces");
+
 
         System.out.println("Standard Functional Interfaces:");
 
-        Consumer<String> print = (text) -> {
-            System.out.println(text.toUpperCase());
-            System.out.println(text.toLowerCase() + "\n");
-        };
+        Consumer<String> print = (text) -> System.out.println(text.toUpperCase());
+        print.accept("I Love Standard Functional Interfaces");
+
+        print = (text) -> System.out.println(text.toLowerCase() + "\n");
         print.accept("I Love Standard Functional Interfaces");
     }
 }
