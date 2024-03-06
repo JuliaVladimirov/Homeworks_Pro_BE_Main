@@ -6,8 +6,7 @@ import java.util.stream.Stream;
 
 import static java.util.Comparator.comparingDouble;
 import static java.util.Comparator.comparingInt;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.Collectors.*;
 
 public class Task4 {
     public static void main(String[] args) {
@@ -29,6 +28,7 @@ public class Task4 {
                 .mapToInt(Employee::getSalary)
                 .average().getAsDouble();
 
+        System.out.println();
         System.out.println("Средняя зарплата сотрудников " + averageSalary + ".\n");
 
 
@@ -71,11 +71,18 @@ public class Task4 {
 
 //        7. Получите сотрудников из всех отделов с максимальной зп
 
-        Map<String, TreeSet<Employee>> employeesByDepartment = employeeList.stream()
-                .collect(groupingBy(Employee::getDepartment, toCollection(() -> new TreeSet<>(comparingInt(Employee::getSalary).reversed()))));
-        employeesByDepartment.forEach((department, employees) ->
-                System.out.println("Отдел: " + department + " , сотрудник: " + employees.first().getFirstName() + " " + employees.first().getLastName() + " - " + employees.first().getSalary()));
-        System.out.println();
+        Map<String, Optional<Employee>> employeesByDepartment = employeeList.stream()
+                .collect(groupingBy(Employee::getDepartment, maxBy(Comparator.comparingInt(Employee::getSalary))));
+
+        System.out.println("Сотрудники с самой высокой зп по отделам:");
+        System.out.println(employeesByDepartment + "\n");
+
+
+//        Map<String, TreeSet<Employee>> employeesByDepartment = employeeList.stream()
+//                .collect(groupingBy(Employee::getDepartment, toCollection(() -> new TreeSet<>(comparingInt(Employee::getSalary).reversed()))));
+//        employeesByDepartment.forEach((department, employees) ->
+//                System.out.println("Отдел: " + department + " , сотрудник: " + employees.first().getFirstName() + " " + employees.first().getLastName() + " - " + employees.first().getSalary()));
+//        System.out.println();
 
 
 //        8. Сгруппировать сотрудников по должности
