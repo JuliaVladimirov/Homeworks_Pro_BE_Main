@@ -78,13 +78,6 @@ public class Task4 {
         System.out.println(employeesByDepartment + "\n");
 
 
-//        Map<String, TreeSet<Employee>> employeesByDepartment = employeeList.stream()
-//                .collect(groupingBy(Employee::getDepartment, toCollection(() -> new TreeSet<>(comparingInt(Employee::getSalary).reversed()))));
-//        employeesByDepartment.forEach((department, employees) ->
-//                System.out.println("Отдел: " + department + " , сотрудник: " + employees.first().getFirstName() + " " + employees.first().getLastName() + " - " + employees.first().getSalary()));
-//        System.out.println();
-
-
 //        8. Сгруппировать сотрудников по должности
         Map<String, List<Employee>> jobTitleEmployees = employeeList.stream()
                 .collect(groupingBy(employee -> employee.getDepartment()));
