@@ -35,7 +35,7 @@ public class Tasks6 {
 // Для людей-индиго
 // Задача 3:Найти сумму квадратов простых чисел, которые являются палиндромами в заданном диапазоне.
 
-        Integer sum = IntStream.range(0, 100).boxed()
+        Integer sum = IntStream.range(0, 300).boxed()
                 .map(Object::toString)
                 .filter(word ->
                 {
