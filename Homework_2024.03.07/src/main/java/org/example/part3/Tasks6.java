@@ -14,6 +14,9 @@ public class Tasks6 {
 
 //  Задача 1: Найти k-ую перестановку из n элементов
 //  Дано число n и число k, необходимо найти k-ую перестановку из n элементов.
+// Александр, в этой задаче я не поняла условие, от слова "совсем" ...(((((
+
+
 
 
 //  Задача 2: Разбить список на подсписки заданного размера
@@ -32,6 +35,24 @@ public class Tasks6 {
 // Для людей-индиго
 // Задача 3:Найти сумму квадратов простых чисел, которые являются палиндромами в заданном диапазоне.
 
+        Integer sum = IntStream.range(0, 100).boxed()
+                .map(Object::toString)
+                .filter(word ->
+                {
+                    for (int i = 0; i < word.length() / 2; i++) {
+                        if (word.charAt(i) == word.charAt((word.length() - 1) - i)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .map(Integer::parseInt)
+                .peek(System.out::println)
+                .mapToInt(Integer::intValue)
+                .reduce(0, (acc, num) -> acc + num*num);
+
+        System.out.println("Сумма квадратов простых чисел, которые являются палиндромами в заданном диапазоне:");
+        System.out.println(sum + "\n");
 
     }
 }
