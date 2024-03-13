@@ -6,7 +6,7 @@ import java.util.List;
 public class Tasks3 {
     public static void main(String[] args) {
 
-//  Поток 3:
+
 //  Задание A:
 
 //              - Отфильтровать на четные и не четные

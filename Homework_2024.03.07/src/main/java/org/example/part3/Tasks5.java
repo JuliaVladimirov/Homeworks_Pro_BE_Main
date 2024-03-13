@@ -92,8 +92,8 @@ public class Tasks5 {
 
 //  Задание 6: Определите все символьные строки максимальной длины в заданном конечном потоке символьных строк через Optional
 
-//        Stream<String> stream = Stream.of("we", "wee", "qwer", "oooo");
-//             Optional<Map.Entry<Integer, List<String>>> max =
+        Stream<String> stream = Stream.of("we", "wee", "qwer", "oooo");
+             Optional<Map.Entry<Integer, List<String>>> max;
 
 
 //  Задание 7: Дан список сотрудников, у каждого из которых есть поле "salary".

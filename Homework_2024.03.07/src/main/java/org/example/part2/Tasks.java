@@ -119,21 +119,35 @@ public class Tasks {
 
         List<Integer> originalList11 = Arrays.asList(1, 24, 13, 41, 22, 6, 10, 37, 12, 7, 31, 2, 48, 12);
         List<Integer> powerList11 = originalList11.stream()
-                .map(num -> (int) Math.pow(num, 2))
+                .map(num -> (int)Math.pow(num,2))
                 .toList();
         System.out.println("Получить список квадратов чисел из другого списка.");
         System.out.println(powerList11 + "\n");
 
+
 //  Задача 12: Получить список букв из списка слов и вывести их в алфавитном порядке.
 
+//  Первый вариант решения - не идеальный, списка не получается:
         List<String> originalList12 = Arrays.asList("Apple", "Potato", "Olive", "Cherry", "Avocado", "Onion", "Banana", "Peach", "Ananas", "Tomato", "Orange");
-        List<Integer> charList = originalList12.stream()
-                .flatMap(s -> s.chars().boxed())
-                .sorted()
-                .toList();
+        System.out.println("12.1 Получить список букв из списка слов и вывести их в алфавитном порядке.");
 
-        System.out.println("Получить список букв из списка слов и вывести их в алфавитном порядке.");
-        System.out.println(charList + "\n");
+        originalList12.stream()
+                .flatMap(s -> s.chars().boxed())
+                .map(Character::toString)
+                .sorted()
+                .forEach(System.out::println);
+
+//  Второй вариант решения - решение тоже совсем не идеальное. Если вдруг будет минутка, хотелось бы услышать ваше решение. Заранее спасибо ;)
+        System.out.println("12.2 Получить список букв из списка слов и вывести их в алфавитном порядке.");
+
+        for (String word : originalList12) {
+            List<Character> list = word.chars()
+                    .mapToObj(item -> (char) item)
+                    .sorted()
+                    .toList();
+            System.out.println(list);
+        }
+        System.out.println();
 
 
 //  Задача 13: Получить первые 3 строки из списка и вывести их в обратном порядке.
@@ -161,13 +175,13 @@ public class Tasks {
 //  Задача 15: Фильтрация и сортировка пользователей по возрасту.
 
         List<User> originalList15 = Arrays.asList(
-                new User("Ben", 25),
-                new User("Tom", 32),
-                new User("Lucy", 23),
-                new User("Greg", 45),
-                new User("Joy", 41),
-                new User("Mary", 55),
-                new User("John", 48));
+                new User ("Ben", 25),
+                new User ("Tom", 32),
+                new User ("Lucy", 23),
+                new User ("Greg", 45),
+                new User ("Joy", 41),
+                new User ("Mary", 55),
+                new User ("John", 48));
 
         List<User> finalList15 = originalList15.stream()
                 .filter(user -> user.getAge() < 40)
