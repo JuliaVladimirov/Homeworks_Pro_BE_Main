@@ -48,7 +48,6 @@ public class Tasks6 {
                 })
                 .map(Integer::parseInt)
                 .peek(System.out::println)
-                .mapToInt(Integer::intValue)
                 .reduce(0, (acc, num) -> acc + num*num);
 
         System.out.println("Сумма квадратов простых чисел, которые являются палиндромами в заданном диапазоне:");
