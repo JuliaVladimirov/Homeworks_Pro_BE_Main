@@ -113,6 +113,8 @@ public class Task1_Task2_NIO {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        } else {
+            throw new FileNotFoundException();
         }
 
 
@@ -154,6 +156,8 @@ public class Task1_Task2_NIO {
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+        }else {
+            throw new FileNotFoundException();
         }
     }
 }
