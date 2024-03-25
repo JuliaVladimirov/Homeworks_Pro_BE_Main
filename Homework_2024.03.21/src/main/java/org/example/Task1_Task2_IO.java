@@ -99,7 +99,7 @@ public class Task1_Task2_IO {
 // Сериализация:
 
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/task2");
+        try (FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/task2.txt");
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
             objectOutputStream.writeObject(clientList);
@@ -109,7 +109,7 @@ public class Task1_Task2_IO {
         }
 
 
-        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/task2");
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/task2.txt");
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
             ArrayList<Client> clientList2;
