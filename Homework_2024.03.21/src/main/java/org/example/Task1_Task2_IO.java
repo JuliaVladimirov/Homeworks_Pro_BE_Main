@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Task1_Task2_IO {
@@ -27,7 +28,9 @@ public class Task1_Task2_IO {
         Client client4 = new Client(619341L, "Active", 95579L, "John", "Green", "johngreen@gmail.com", "Oak Street 78", "+176684550143");
         Client client5 = new Client(913835L, "VIP", 93835L, "Mary", "Wilson", "marywilson@gmail.com", "Pine Street 43", "+178774794727");
 
-        List<Client> clientList = List.of(client1, client2, client3, client4, client5);
+        ArrayList<Client> clientList = new ArrayList<> (Arrays.asList (client1, client2, client3, client4, client5));
+
+//без сериализации:
 
         try (BufferedWriter fileWriter = new BufferedWriter(
                 new FileWriter("src/main/resources/task1.csv"))) {
@@ -61,7 +64,7 @@ public class Task1_Task2_IO {
 
             String line;
             int count = 0;
-            List<Client> clientList1 = new ArrayList<>();
+            ArrayList<Client> clientList1 = new ArrayList<>();
             String[] fields;
 
             while (true) {
@@ -84,12 +87,39 @@ public class Task1_Task2_IO {
                             fields[6],
                             fields[7]));
                 }
-
             }
+            System.out.println("Без сериализации");
             System.out.println(clientList1);
 
 
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+// Сериализация:
+
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/task2");
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+
+            objectOutputStream.writeObject(clientList);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/task2");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+            ArrayList<Client> clientList2;
+
+            clientList2=(ArrayList<Client>)objectInputStream.readObject();
+
+            System.out.println("С сериализацией");
+            System.out.println(clientList2);
+
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
