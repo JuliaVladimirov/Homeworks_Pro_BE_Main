@@ -32,7 +32,7 @@ public class RunTask3_Thread {
         thread1.interrupt();
 
         try {
-            Thread.sleep(10000);// или Thread.sleep(5000), если считать все потоки от точки старта
+            Thread.sleep(5000);// или Thread.sleep(5000), если считать все потоки от точки старта
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +40,7 @@ public class RunTask3_Thread {
         thread2.interrupt();
 
         try {
-            Thread.sleep(15000);// или Thread.sleep(5000), если считать все потоки от точки старта
+            Thread.sleep(5000);// или Thread.sleep(5000), если считать все потоки от точки старта
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
