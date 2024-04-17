@@ -14,10 +14,8 @@ public class Student extends Thread{
 
 // Вывела стоимость обучения и преподавательский процент в поля.
 // Ситуация на рынке меняется, и цены могут подрасти )))).
-
     private int payment;
     private int teachersPercent;
-
     private AtomicInteger counter;
 
     public Student(int payment, int teachersPercent, AtomicInteger counter) {

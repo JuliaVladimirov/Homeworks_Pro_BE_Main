@@ -14,7 +14,7 @@ public class EarnMillion {
         AtomicInteger counter = new AtomicInteger(0);
         while(counter.get() < 1_000_000){
             new Student(1000, 10, counter).start();
-            Thread.sleep(50);
+            Thread.sleep(5);
         }
         System.out.println("We earned " + counter.get());
     }
