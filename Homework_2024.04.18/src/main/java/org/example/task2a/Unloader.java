@@ -9,17 +9,16 @@ public class Unloader extends Thread {
     private AtomicInteger boxesOnDock;
     private AtomicBoolean truckIsEmpty;
 
-    public Unloader(AtomicInteger boxesInTruck,AtomicInteger boxesOnDock, AtomicBoolean truckIsEmpty) {
+    public Unloader(AtomicInteger boxesInTruck, AtomicInteger boxesOnDock, AtomicBoolean truckIsEmpty) {
         this.boxesInTruck = boxesInTruck;
         this.boxesOnDock = boxesOnDock;
         this.truckIsEmpty = truckIsEmpty;
     }
 
 
-
     @Override
     public void run() {
-        while (boxesInTruck.get() > 0) {
+        while (true) {
             synchronized (boxesOnDock) {
                 if (boxesOnDock.get() > 1) {
                     try {
@@ -31,12 +30,10 @@ public class Unloader extends Thread {
 
                     boxesOnDock.incrementAndGet();
                     boxesInTruck.decrementAndGet();
-                        System.out.println("Unloader - On the dock - " + boxesOnDock.get());
-                        System.out.println("Unloader - In the truck - " + boxesInTruck.get());
+                    System.out.println("Unloader - On the dock - " + boxesOnDock.get());
+                    System.out.println("Unloader - In the truck - " + boxesInTruck.get());
 
-                    synchronized (boxesOnDock) {
-                        boxesOnDock.notifyAll();
-                    }
+                    boxesOnDock.notifyAll();
                 }
             }
 
@@ -46,6 +43,12 @@ public class Unloader extends Thread {
                 throw new RuntimeException(e);
             }
 
+            if (boxesInTruck.get() < 1) {
+                synchronized (boxesOnDock) {
+                    boxesOnDock.notifyAll();
+                }
+                break;
+            }
         }
         System.out.println("Unloader " + Thread.currentThread().getName() + ": Truck is empty - " + boxesInTruck.get());
         truckIsEmpty.set(true);

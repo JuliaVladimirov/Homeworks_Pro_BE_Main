@@ -28,9 +28,7 @@ public class Loader extends Thread {
                     boxesOnDock.decrementAndGet();
                     System.out.println("Loader " + Thread.currentThread().getName() + ": - On the dock - " + boxesOnDock.get());
 
-                    synchronized (boxesOnDock) {
-                        boxesOnDock.notifyAll();
-                    }
+                    boxesOnDock.notifyAll();
                 }
             }
             try {
@@ -38,7 +36,7 @@ public class Loader extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            if(truckIsEmpty.get() && boxesOnDock.get() < 1){
+            if (truckIsEmpty.get() && boxesOnDock.get() < 1) {
                 synchronized (boxesOnDock) {
                     boxesOnDock.notifyAll();
                 }

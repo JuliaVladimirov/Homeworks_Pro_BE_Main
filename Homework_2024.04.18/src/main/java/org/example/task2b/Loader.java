@@ -13,6 +13,7 @@ public class Loader extends Thread {
         this.truckIsEmpty = truckIsEmpty;
 
     }
+
     public Stack<Box> getBoxesOnDock() {
         return boxesOnDock;
     }
@@ -31,9 +32,7 @@ public class Loader extends Thread {
                     boxesOnDock.pop();
                     System.out.println("Loader " + Thread.currentThread().getName() + ": - On the dock - " + boxesOnDock.size());
 
-                    synchronized (boxesOnDock) {
-                        boxesOnDock.notifyAll();
-                    }
+                    boxesOnDock.notifyAll();
                 }
             }
             try {
@@ -41,7 +40,7 @@ public class Loader extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            if(truckIsEmpty.get() && boxesOnDock.isEmpty()){
+            if (truckIsEmpty.get() && boxesOnDock.isEmpty()) {
                 synchronized (boxesOnDock) {
                     boxesOnDock.notifyAll();
                 }
