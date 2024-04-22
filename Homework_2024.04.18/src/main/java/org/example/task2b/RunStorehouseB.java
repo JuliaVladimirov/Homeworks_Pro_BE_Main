@@ -1,9 +1,7 @@
 package org.example.task2b;
 
-
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RunStorehouseB {
 
@@ -30,11 +28,10 @@ public class RunStorehouseB {
         }
 
         Stack<Box> boxesOnDock = new Stack<>();
-        AtomicBoolean truckIsEmpty = new AtomicBoolean(false);
 
-        Unloader unloader = new Unloader(boxesInTruck,boxesOnDock, truckIsEmpty);
-        Loader loader1 = new Loader(boxesOnDock, truckIsEmpty);
-        Loader loader2 = new Loader(boxesOnDock, truckIsEmpty);
+        Unloader unloader = new Unloader(boxesInTruck,boxesOnDock);
+        Loader loader1 = new Loader(boxesOnDock, boxesInTruck);
+        Loader loader2 = new Loader(boxesOnDock, boxesInTruck);
 
         unloader.start();
 
@@ -47,11 +44,7 @@ public class RunStorehouseB {
         loader1.join();
         loader2.join();
 
-
         System.out.println(boxesInTruck);
         System.out.println(boxesOnDock);
-
-
-
     }
 }

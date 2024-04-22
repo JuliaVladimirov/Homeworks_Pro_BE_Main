@@ -1,30 +1,15 @@
 package org.example.task2b;
 
 import java.util.Stack;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Unloader extends Thread {
 
     private Stack<Box> boxesInTruck;
     private Stack<Box> boxesOnDock;
-    private AtomicBoolean truckIsEmpty;
 
-    public Unloader(Stack<Box> boxesInTruck, Stack<Box> boxesOnDock, AtomicBoolean truckIsEmpty) {
+    public Unloader(Stack<Box> boxesInTruck, Stack<Box> boxesOnDock) {
         this.boxesInTruck = boxesInTruck;
         this.boxesOnDock = boxesOnDock;
-        this.truckIsEmpty = truckIsEmpty;
-    }
-
-    public Stack<Box> getBoxesInTruck() {
-        return boxesInTruck;
-    }
-
-    public Stack<Box> getBoxesOnDock() {
-        return boxesOnDock;
-    }
-
-    public AtomicBoolean getTruckIsEmpty() {
-        return truckIsEmpty;
     }
 
     @Override
@@ -52,16 +37,15 @@ public class Unloader extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            if (boxesInTruck.isEmpty()) {
-                synchronized (boxesOnDock) {
+            synchronized (boxesOnDock) {
+                if (boxesInTruck.isEmpty()) {
                     boxesOnDock.notifyAll();
+                    break;
                 }
-                break;
             }
 
         }
         System.out.println("Unloader " + Thread.currentThread().getName() + ": Truck is empty - " + boxesInTruck.isEmpty());
-        truckIsEmpty.set(true);
         System.out.println("Unloader " + Thread.currentThread().getName() + " finished");
     }
 }

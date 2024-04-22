@@ -26,11 +26,9 @@ public class RunStorehouseA {
         AtomicInteger boxesInTruck = new AtomicInteger(numberOfBoxes);
         AtomicInteger boxesOnDock = new AtomicInteger(0);
 
-        AtomicBoolean truckIsEmpty = new AtomicBoolean(false);
-
-        Unloader unloader = new Unloader(boxesInTruck,boxesOnDock, truckIsEmpty);
-        Loader loader1 = new Loader(boxesOnDock, truckIsEmpty);
-        Loader loader2 = new Loader(boxesOnDock, truckIsEmpty);
+        Unloader unloader = new Unloader(boxesInTruck,boxesOnDock);
+        Loader loader1 = new Loader(boxesOnDock, boxesInTruck);
+        Loader loader2 = new Loader(boxesOnDock, boxesInTruck);
 
         unloader.start();
 

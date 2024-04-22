@@ -1,17 +1,15 @@
 package org.example.task2a;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Loader extends Thread {
 
     private AtomicInteger boxesOnDock;
-    private AtomicBoolean truckIsEmpty;
+    private AtomicInteger boxesInTruck;
 
-    public Loader(AtomicInteger boxesOnDock, AtomicBoolean truckIsEmpty) {
+    public Loader(AtomicInteger boxesOnDock, AtomicInteger boxesInTruck) {
         this.boxesOnDock = boxesOnDock;
-        this.truckIsEmpty = truckIsEmpty;
-
+        this.boxesInTruck = boxesInTruck;
     }
 
     @Override
@@ -36,15 +34,15 @@ public class Loader extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            if (truckIsEmpty.get() && boxesOnDock.get() < 1) {
-                synchronized (boxesOnDock) {
+            synchronized (boxesOnDock) {
+                if (boxesInTruck.get() < 1 && boxesOnDock.get() < 1) {
                     boxesOnDock.notifyAll();
+                    break;
                 }
-                break;
             }
         }
 
-        System.out.println(Thread.currentThread().getName() + ": Dock is empty - " + boxesOnDock.get());
+        System.out.println(Thread.currentThread().getName() + ": Dock is empty - " + boxesOnDock.get() + ", Truck is empty - " + boxesInTruck.get());
         System.out.println("Loader " + Thread.currentThread().getName() + " finished");
     }
 }
