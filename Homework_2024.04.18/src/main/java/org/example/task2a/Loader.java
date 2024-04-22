@@ -15,30 +15,34 @@ public class Loader extends Thread {
     @Override
     public void run() {
         while (true) {
-            synchronized (boxesOnDock) {
-                if (boxesOnDock.get() < 1) {
+            if (boxesOnDock.get() < 1) {
+                synchronized (boxesOnDock) {
                     try {
                         boxesOnDock.wait();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else {
-                    boxesOnDock.decrementAndGet();
-                    System.out.println("Loader " + Thread.currentThread().getName() + ": - On the dock - " + boxesOnDock.get());
+                }
+            } else {
+                boxesOnDock.decrementAndGet();
+                System.out.println("Loader " + Thread.currentThread().getName() + ": - On the dock - " + boxesOnDock.get());
 
+                synchronized (boxesOnDock) {
                     boxesOnDock.notifyAll();
                 }
             }
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            synchronized (boxesOnDock) {
-                if (boxesInTruck.get() < 1 && boxesOnDock.get() < 1) {
+
+            if (boxesInTruck.get() < 1 && boxesOnDock.get() < 1) {
+                synchronized (boxesOnDock) {
                     boxesOnDock.notifyAll();
-                    break;
                 }
+                break;
             }
         }
 
