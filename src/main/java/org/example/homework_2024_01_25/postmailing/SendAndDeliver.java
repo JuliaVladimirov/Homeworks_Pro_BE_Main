@@ -32,7 +32,7 @@ public class SendAndDeliver {
 
         System.out.println("----------------------------------------Package-------------------------------------------------------");
 
-        java.lang.Package package1 = new java.lang.Package("package", "Jamie Peter Green, 45 White Oak St., Vincentown, NJ 10018", "Miranda McAnderson, 85 Bradford Lane St., Louisville, KY 79860");
+        Package package1 = new Package("package", "Jamie Peter Green, 45 White Oak St., Vincentown, NJ 10018", "Miranda McAnderson, 85 Bradford Lane St., Louisville, KY 79860");
         package1.informToDeliver();
         package1.deliver();
         package1.informToSend();
