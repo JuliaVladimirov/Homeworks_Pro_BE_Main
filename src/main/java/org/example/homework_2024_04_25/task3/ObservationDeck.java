@@ -12,7 +12,6 @@ import java.util.Scanner;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class ObservationDeck {
 
     public static void main(String[] args) throws InterruptedException {
