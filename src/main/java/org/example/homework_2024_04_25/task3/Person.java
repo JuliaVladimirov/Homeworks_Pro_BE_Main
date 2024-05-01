@@ -27,7 +27,6 @@ public class Person extends Thread {
     @Override
     public void run() {
 
-
         System.out.println("Пассажир зашел в лифт (" + weight + " кг)");
         try {
             cyclicBarrier.await(4000, TimeUnit.MILLISECONDS);
