@@ -9,7 +9,7 @@ package org.example.homework_2024_04_25.task3;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Elevator extends Thread {
+public class Elevator implements Runnable {
 
     private AtomicInteger totalWeight;
 

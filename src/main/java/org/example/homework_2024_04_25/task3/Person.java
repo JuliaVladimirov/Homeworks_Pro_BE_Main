@@ -34,8 +34,8 @@ public class Person extends Thread {
         } catch (InterruptedException  | BrokenBarrierException ignore) {
 
         } catch (TimeoutException e) {
-            System.out.println("Лифт не полный");
-            elevator.start();
+            System.out.println("Лифт не полный, но пассажиров больше нет");
+            elevator.run();
 
         }
     }

@@ -42,10 +42,7 @@ public class ObservationDeck {
                 System.out.println("Еще один пассажир весит : " + weight + " кг");
 
                 cyclicBarrier.reset();
-                elevator.start();
-                elevator = new Elevator(totalWeight);
-                cyclicBarrier = new CyclicBarrier(5, elevator);
-
+                elevator.run();
                 i--;
             }
             Thread.sleep(500);
