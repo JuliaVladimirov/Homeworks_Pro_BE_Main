@@ -17,6 +17,7 @@ package org.example.homework_2024_04_25.task2;
 // Какой синхронизатор с библиотеки concurrent мог бы быть Вам полезен при выполнении данной задачи?
 //
 import java.util.concurrent.Phaser;
+import java.util.concurrent.TimeUnit;
 
 public class Author {
     public static void main(String[] args) {
@@ -100,6 +101,8 @@ public class Author {
 //------------------------------------------------------------------------------------------------------------
 
         System.out.println("Можете меня поздравить, моя книга стала бестселлером!");
+
+
     }
 }
 
