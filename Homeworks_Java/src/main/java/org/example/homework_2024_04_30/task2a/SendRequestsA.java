@@ -1,4 +1,4 @@
-package org.example.homework_2024_04_30.task2;
+package org.example.homework_2024_04_30.task2a;
 
 //2*. У вас есть задача проверять какой-то сайт, с целью проверки опубликования
 //на нем новой информации, но если мы будем слишком часто проверять этот сайт,
@@ -14,26 +14,21 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class SendRequests {
+public class SendRequestsA {
 
     public static void main(String[] args) throws InterruptedException {
 
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new RequestA(), 0, 1, TimeUnit.MINUTES);
 
-        long delay = 0;
-        for (int i = 0; i < 20; i++) {// Количество запросов ставлю от балды, в задаче не указано
-            scheduler.schedule(new Request(i), delay, TimeUnit.MINUTES);
-            delay++;
-
-        }
-        scheduler.shutdown();
 
         for (int i = 0; i < 20; i++) {
-            System.out.println(i + " - Главный поток продолжает работать");// главный поток продолжает работать параллельно выполнению запросов
+            System.out.println(i + " - Главный поток продолжает работать");
             Thread.sleep(60_000);
         }
 
 
+        scheduler.shutdown();
     }
 }
 

@@ -1,11 +1,11 @@
-package org.example.homework_2024_04_30.task2;
+package org.example.homework_2024_04_30.task2b;
 
 import java.time.LocalTime;
-public class Request implements Runnable {
+public class RequestB implements Runnable {
 
     private int requestNumber;
 
-    public Request(int taskNumber) {
+    public RequestB(int taskNumber) {
         this.requestNumber = taskNumber;
     }
 
