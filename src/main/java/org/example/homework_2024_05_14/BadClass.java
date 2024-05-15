@@ -14,14 +14,14 @@ import java.lang.reflect.Method;
 @BadCode(name = "Yulia", comment = "Comment1")
 public class BadClass {
 
-    int num;
+    int number;
 
     @BadCode(name = "Yulia", comment = "Comment2")
-    private String str;
+    private String word;
 
     @BadCode(name = "Yulia", comment = "Comment3")
     public void print() {
-        System.out.println(str + num);
+        System.out.println(word + number);
     }
 
     public static void main(String[] args) {
