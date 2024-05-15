@@ -30,7 +30,7 @@ public class SomeBadCodeClass {
 
         Class aClass = badClass.getClass();
         if (aClass.isAnnotationPresent(BadCode.class)) {
-            System.out.println("Имя класса: " + aClass.getName());
+            System.out.println("Имя класса: " + aClass.getSimpleName());
             BadCode annotation = (BadCode) aClass.getAnnotation(BadCode.class);
             System.out.println("Имя ревьювера: " + annotation.name());
             System.out.println("Комментарий: " + annotation.comment());
