@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 @BadCode(name = "Yulia", comment = "Comment1")
-public class BadClass {
+public class SomeBadCodeClass {
 
     int number;
 
@@ -26,7 +26,7 @@ public class BadClass {
 
     public static void main(String[] args) {
 
-        BadClass badClass = new BadClass();
+        SomeBadCodeClass badClass = new SomeBadCodeClass();
 
         Class aClass = badClass.getClass();
         if (aClass.isAnnotationPresent(BadCode.class)) {
